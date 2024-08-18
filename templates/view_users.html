@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registered Users</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 600px;  /* Beyaz kareyi büyüttük */
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5em;  /* Registered Users metnini büyüttük */
+            margin-bottom: 20px;
+        }
+        table {
+            width: 80%;  /* Tabloyu küçülttük */
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        th, td {
+            padding: 5px;  /* Hücrelerin içindeki boşluğu küçülttük */
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.9em;  /* Hücrelerin yazı boyutunu küçülttük */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .reset-button {
+            background-color: #ff4c4c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .reset-button:hover {
+            background-color: #ff1a1a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registered Users</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Password</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <form action="/reset-users" method="post">
+            <button type="submit" class="reset-button">Reset Users</button>
+        </form>
+    </div>
+</body>
+</html>
